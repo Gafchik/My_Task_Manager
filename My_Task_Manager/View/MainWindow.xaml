@@ -24,9 +24,7 @@
             <Button Content="Обновить"  Margin="5" Command="{Binding UpDate}"/>
 
         </StackPanel>
-
-
-        <TextBox x:Name="current_Path" Background="Aqua" Text="{Binding Current_Puth}" FontSize="14" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+    
 
         <ListBox Grid.Row="2" x:Name="listbox"  ItemsSource="{Binding process}" Grid.ColumnSpan="2" Background="GreenYellow"
                Grid.Column="0" Grid.RowSpan="2"    SelectedItem="{Binding Selected_Item}">

@@ -18,8 +18,13 @@ namespace My_Task_Manager.ModelView
            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         #endregion
         public ObservableCollection<Process> process { get; set; }
+
+        PerformanceCounter cpucounter;
+        PerformanceCounter memcounter;
         public ViewModel()
         {
+            cpucounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            memcounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
             process = new ObservableCollection<Process>();
             InitializeComponen();
         }
@@ -32,7 +37,8 @@ namespace My_Task_Manager.ModelView
                 foreach (var item in Process.GetProcesses().ToList())
                 {
                     process.Add(item);
-                  
+                
+                    
                 }
                
             }
@@ -41,6 +47,10 @@ namespace My_Task_Manager.ModelView
 
 
         }
+
+ 
+
+
         private Process selected_item;
         public Process Selected_Item
         {
