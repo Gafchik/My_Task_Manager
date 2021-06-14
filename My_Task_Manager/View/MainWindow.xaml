@@ -1,0 +1,43 @@
+﻿<Window x:Class="My_Task_Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:My_Task_Manager"
+        mc:Ignorable="d"
+         Title="My Task Manager" Height="450" Width="650">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Background="BlueViolet" >
+            <Button Content="Удалить"  Margin="5" Command="{Binding Dell}"/>
+            <Button Content="Добавить в автозагрузку"  Margin="5" Command="{Binding Add}"/>
+            <Button Content="Обновить"  Margin="5" Command="{Binding UpDate}"/>
+
+        </StackPanel>
+
+
+        <TextBox x:Name="current_Path" Background="Aqua" Text="{Binding Current_Puth}" FontSize="14" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+        <ListBox Grid.Row="2" x:Name="listbox"  ItemsSource="{Binding process}" Grid.ColumnSpan="2" Background="GreenYellow"
+               Grid.Column="0" Grid.RowSpan="2"    SelectedItem="{Binding Selected_Item}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Path=ProcessName}" FontSize="15"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>
